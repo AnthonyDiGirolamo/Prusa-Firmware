@@ -2886,12 +2886,7 @@ bool lcd_calibrate_z_end_stop_manual(bool only_z)
 calibrated:
     // Let the machine think the Z axis is a bit higher than it is, so it will not home into the bed
     // during the search for the induction points.
-	if ((PRINTER_TYPE == PRINTER_MK25) || (PRINTER_TYPE == PRINTER_MK2) || (PRINTER_TYPE == PRINTER_MK2_SNMM)) {
 		current_position[Z_AXIS] = Z_MAX_POS-3.f;
-	}
-	else {
-		current_position[Z_AXIS] = Z_MAX_POS+4.f;
-	}
     plan_set_position_curposXYZE();
     return true;
 
@@ -5358,9 +5353,9 @@ static void lcd_main_menu()
                     else {
                         if (fsensor.getAutoLoadEnabled()) {
                             MENU_ITEM_SUBMENU_P(_T(MSG_AUTOLOAD_FILAMENT), lcd_menu_AutoLoadFilament);
-                        }                        
+                        }
                     }
-#endif //REMOVE_AUTOLOAD_FILAMENT_MENU_ENTRY 
+#endif //REMOVE_AUTOLOAD_FILAMENT_MENU_ENTRY
                 } else {
 #endif //FILAMENT_SENSOR
                     MENU_ITEM_SUBMENU_P(_T(MSG_LOAD_FILAMENT), lcd_LoadFilament);
